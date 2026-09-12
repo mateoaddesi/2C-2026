@@ -1,0 +1,47 @@
+Ejercicio 1:
+
+2.SELECT nombre_sucursal, COUNT(*) AS cantidad_empleados 
+  FROM Empleados 
+  GROUP BY nombre_sucursal 
+  ORDER BY cantidad_empleados DESC;
+
+3.SELECT Barrios.nombre 
+  FROM Barrios 
+  LEFT JOIN Sucursales 
+  ON Sucursales.barrio = Barrios.nombre 
+  WHERE Sucursales.nombre_sucursal IS NULL;
+
+U otra formas de hacerlo:
+    -SELECT nombre 
+     FROM Barrios 
+     WHERE nombre NOT IN 
+     (SELECT barrio FROM Sucursales);
+    -SELECT nombre 
+     FROM Barrios 
+     EXCEPT 
+     SELECT barrio 
+     FROM Sucursales;
+
+4. SELECT barrio, COUNT(*) AS cantidad_sucursales 
+   FROM Sucursales 
+   GROUP BY barrio 
+   ORDER BY cantidad_sucursales DESC LIMIT 1;
+
+5. SELECT DISTINCT c1.numero_combo, c1.descripcion, c1.precio 
+   FROM Combos AS c1 
+   INNER JOIN Combos AS c2 
+   ON c1.precio = c2.precio 
+   AND c1.numero_combo <> c2.numero_combo 
+   ORDER BY c1.precio
+;
+
+Ejercicio 2:
+
+1. SELECT s.numero_socio, s.nombre, s.apellido 
+   FROM Socios AS s 
+   LEFT JOIN Socios_Deportes AS sd 
+   ON s.numero_socio = sd.numero_socio 
+   WHERE sd.numero_socio IS NULL;
+
+2. 
+
